@@ -51,7 +51,7 @@ By means of the go routines it is going to have simultaneously 10 calls to the a
 --timeout 3m
 ```
 The traffic generator will run for 3 minutes and after these 3 minutes, it will stop.
-```
+
 ### Endpoint generation:
 To generate the endpoints we use the information of the command that was executed in the cli.
 For this case we are going to use the games 1, 2 and 5 and a maximum of 30 players and a maximum of 30 players, so we could generate combinations such as.
