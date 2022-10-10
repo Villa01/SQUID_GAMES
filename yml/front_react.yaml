@@ -1,0 +1,44 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  namespace: squidgame
+  labels:
+    app: react-deployment
+spec:
+  selector:
+    matchLabels:
+      app: react-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: react-deployment
+    spec:
+      hostname: react-pod-host
+      containers:
+        - name: react-client
+          image: villa01/frontend-squidgames
+          env:
+          - name: REDIS_URL
+            value: svc-node:3000
+          - name: MONGO_HOST
+            value: svc-rust:8080
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-react
+  namespace: squidgame
+  labels:
+    app: react-deployment
+spec:
+  selector:
+    app: react-deployment
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP

@@ -1,0 +1,25 @@
+{
+  "name": "grcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "gRCP_Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node api-server.js",
+    "dev": "nodemon run api-server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.5.10",
+    "@grpc/proto-loader": "^0.6.9",
+    "amqplib": "^0.8.0",
+    "async": "^3.2.3",
+    "google-protobuf": "^3.20.0-rc.2",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.6",
+    "nodemon": "^2.0.15"
+  }
+}

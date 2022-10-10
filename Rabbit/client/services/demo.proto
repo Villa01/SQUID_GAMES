@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/racarlosdavid/demo-gRPC/services";
+
+package proto;
+
+service Juegos {
+  rpc Jugar (JuegosRequest) returns (JuegosReply) {}
+}
+
+message JuegosRequest {
+  int32 gameid = 1;
+  int32 players = 2;
+}
+
+message JuegosReply {
+  int32 gameid = 1;
+  int32 players = 2;
+}
+
+// protoc --go_out=. --go_opt=paths=source_relative \
+//     --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+//     services/demo.proto

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto;
+
+service Juegos {
+  rpc Jugar (JuegosRequest) returns (JuegosReply) {}
+}
+
+message JuegosRequest {
+  int32 gameid = 1;
+  int32 players = 2;
+}
+
+message JuegosReply {
+  int32 gameid = 1;
+  int32 players = 2;
+  string game_name = 3;
+  int32 winner = 4;
+  string queue = 5;
+}
+

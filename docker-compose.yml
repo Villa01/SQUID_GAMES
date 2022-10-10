@@ -1,0 +1,29 @@
+services:
+
+  frontend:
+    image: villa01/squidgames-frontend
+    ports: 
+      - 8080:3000
+    environment:
+      - REDIS_URL=http://localhost:5000/
+      - MONGO_HOST=http://localhost:8081/api/get_logs
+
+  node-backend:
+    image: villa01/node-api
+    ports:
+      - 5000:5000
+    environment:
+      - REDIS_URL='35.184.204.155:6379'
+      - TIDB_IP='34.66.120.29'
+      - TIDB_PORT=4000
+      - TIDB_DATABASE=sopes1
+      - TIDB_USER=root
+      - TIDB_PASSWORD=
+      - SOCKET=http://localhost:3000/
+
+  rust-backend:
+    image: villa01/rust-backend
+    ports: 
+      - 8081:8081
+    environment:
+      - MONGODB_URI=mongodb://root:password@34.72.123.155:27017/

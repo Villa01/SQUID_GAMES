@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-grpc-kafka
+  namespace: squidgame
+  labels:
+    app: grpc-deployment
+    
+spec:
+  selector:
+    app: grpc-deployment
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP

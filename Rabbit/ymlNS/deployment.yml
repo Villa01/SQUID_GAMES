@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: squidgame
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-deployment
+  namespace: squidgame
+  labels:
+    app: grpc-deployment
+spec:
+  selector:
+    matchLabels:
+      app: grpc-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: grpc-deployment
+    spec:
+      hostname: grpc-pod
+      containers:
+        - name: grpc-client
+          image: diians2302/api-client-grpc-k8s
+          env:
+          - name: HOST
+            value: grpc-pod
+          ports:
+            - containerPort: 8080
+        - name: grpc-server
+          image: diians2302/server-grpc-k8s
+          env:
+          - name: HOST
+            value: rabbitmq-0.rabbitmq.squidgame.svc.cluster.local
+          ports:
+            - containerPort: 50051
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subscriber-deployment
+  namespace: squidgame
+  labels:
+    app: subscriber
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subscriber
+  template:
+    metadata:
+      labels:
+        app: subscriber
+    spec:
+      hostname: grcp-host
+      containers:
+      - name: subscriber-cont
+        image: suscriber-go-k8s
+        env:
+        - name: HOST
+          value: rabbitmq-0.rabbitmq.squidgame.svc.cluster.local
+
+kubectl expose deploy/grpc-deployment --type=LoadBalancer --port=8080 --namespace=squidgame

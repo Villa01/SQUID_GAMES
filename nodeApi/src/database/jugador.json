@@ -1,0 +1,122 @@
+[
+    {
+        "name": "nombre del juego",
+        "id": 1,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    },
+    {
+        "name": "nombre del juego",
+        "id": 2,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    },
+    {
+        "name": "nombre del juego",
+        "id": 3,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    },
+    {
+        "name": "nombre del juego",
+        "id": 4,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    },
+    {
+        "name": "nombre del juego",
+        "id": 5,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    },
+    {
+        "name": "nombre del juego",
+        "id": 6,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    },
+    {
+        "name": "nombre del juego",
+        "id": 7,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    },
+    {
+        "name": "nombre del juego",
+        "id": 8,
+        "players": [
+            {
+                "name": "David"
+            },
+            {
+                "name": "Pedro"
+            }
+        ],
+        "winner": "David",
+        "broker": "Rabbit",
+        "datetime": "08/04/2022 6:30 PM"
+    }
+]

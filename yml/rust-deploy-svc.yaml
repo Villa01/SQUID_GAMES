@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-deployment
+  namespace: squidgame
+  labels:
+    app: rust-deployment
+spec:
+  selector:
+    matchLabels:
+      app: rust-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rust-deployment
+    spec:
+      hostname: rust-pod-host
+      containers:
+        - name: rust-api
+          image: villa01/rust-backend
+          env:
+          - name: MONGODB_URI
+            value: mongodb://root:password@35.202.76.252:27017/
+          ports:
+            - containerPort: 8080
+            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-rust
+  namespace: squidgame
+  labels:
+    app: rust-deployment
+spec:
+  selector:
+    app: rust-deployment
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP

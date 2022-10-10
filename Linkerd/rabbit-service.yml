@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-grpc-rabbit
+  namespace: squidgame
+  labels:
+    app: grpc-rabbit-deployment
+spec:
+  selector:
+    app: grpc-rabbit-deployment
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
