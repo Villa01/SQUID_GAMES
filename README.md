@@ -4,6 +4,25 @@ Generic distributed architecture system that samples real-time statistics using 
 ## Architecture
 ![image](https://user-images.githubusercontent.com/68957047/194927610-3bffa178-6df4-4a55-9814-ef67fb290b70.png)
 
+## Docker Images
+It will be used to package the application into containers, where it is was used distroless techniques to create small images. Docker was the tool to create a local test environment before deploying the images to the Kubernetes cluster.
+
+## Kubernetes Cluster
+Kubernetes was in charge of container orchestration. Before the client generates the traffic, the project implemented a Kubernetes cluster that was used to deploy the images to the Kubernetes cluster.
+Kubernetes Objects that were used to deploy different objects:
+* __Ingress controllers__ : to expose different parts of the application.
+* __Deployments and services__: to deploy and communicate different sections
+of the application.
+* __pods__ : if necessary, but it is common to use other objects with a higher application level such as deployments and services.
+
+## Namespace
+In our case we have the namespace squidgame.
+## Load Balancer
+A layer 7 load balancer was configured on the Kubernetes cluster using Helm. This load balancer exposed the application to the outside world. For this project we used  a nginx-ingress.
+## Ingress
+The objective is to compare the response time and performance of different routes, the first one using Kafka Strimzi as broker, the second one using
+RabbitMQ. All the input information will pass through the ingress controller.
+
 ## Go Traffic Generator
 This application is written in Go, using Goroutines and channels. The syntax
 of the CLI will be:
@@ -64,3 +83,4 @@ the following:
 193.60.11.13.nip.io/game/5/gamename/Last/players/30
 ```
 Once an endpoint is generated, a request is made to the server, and once the api receives the information using gRPC, this information is passed to the gRCP Server to execute the algorithm of the game and find the winner. The winner is found and once the game is finished the information is passed to the queue, either Kafka or RabbitMQ. Information is passed to the queue either Kafka, RabbitMQ to be consumed by the gRCP Worker. The Go Worker, which will be in charge of saving the information into the databases.
+
